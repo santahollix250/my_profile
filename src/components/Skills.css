@@ -1,0 +1,287 @@
+.skills {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+}
+
+.skills-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+.skills-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.skills-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  animation: glitchIn 0.8s ease-out;
+}
+
+.title-bracket {
+  color: #ff0000;
+  font-size: 3rem;
+  font-weight: 300;
+  animation: bracketPulse 2s ease-in-out infinite;
+}
+
+.title-text {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff0000 0%, #ff3333 50%, #ff0000 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientFlow 3s ease infinite, textGlow 2s ease-in-out infinite;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.skills-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-card {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  background: rgba(255, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  border-color: #ff0000;
+  box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2), 0 0 30px rgba(255, 0, 0, 0.3);
+}
+
+.skill-scan {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff0000, transparent);
+  animation: skillScan 3s linear infinite;
+}
+
+.skill-card:hover .skill-scan {
+  animation: skillScan 1.5s linear infinite;
+}
+
+.skill-content {
+  position: relative;
+  z-index: 10;
+}
+
+.skill-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.skill-icon-ring {
+  position: absolute;
+  inset: -5px;
+  border: 1px solid #ff0000;
+  border-radius: 50%;
+  animation: ringRotate 4s linear infinite;
+  opacity: 0.5;
+}
+
+.skill-card:hover .skill-icon-ring {
+  opacity: 1;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.skill-icon {
+  font-size: 3rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
+}
+
+.skill-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  color: #ffffff;
+}
+
+.skill-card:hover .skill-name {
+  background: linear-gradient(135deg, #ff0000, #ff3333);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.skill-progress-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.skill-progress-bg {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  height: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.skill-progress-fill {
+  height: 100%;
+  transition: width 1.5s ease;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff0000, #ff3333, #ff0000);
+  background-size: 200% 100%;
+  animation: bloodFlow 3s linear infinite;
+}
+
+.skill-card:hover .skill-progress-fill {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.skill-progress-blood {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: bloodShimmer 2s infinite;
+}
+
+.skill-progress-glitch {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    rgba(255, 0, 0, 0.1) 5px,
+    rgba(255, 0, 0, 0.1) 10px
+  );
+  animation: glitchProgress 0.5s steps(10) infinite;
+}
+
+.skill-percentage-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.skill-percentage {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ff0000;
+}
+
+.skill-percentage-symbol {
+  color: #ff0000;
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes glitchIn {
+  0% { opacity: 0; transform: skewX(-10deg) translateX(-30px); }
+  50% { opacity: 0.5; transform: skewX(5deg) translateX(15px); }
+  100% { opacity: 1; transform: skewX(0) translateX(0); }
+}
+
+@keyframes bracketPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; text-shadow: 0 0 15px #ff0000; }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bloodFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes bloodShimmer {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+@keyframes glitchProgress {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2px, 0); }
+  50% { transform: translate(-2px, 0); }
+  75% { transform: translate(1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes skillScan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
