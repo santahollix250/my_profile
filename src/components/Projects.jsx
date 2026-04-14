@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Projects.css';
 
-const Projects = ({ darkMode }) => {
+const Projects = () => {
+  const { isDarkMode } = useTheme();
   const projects = [
     {
       title: "AI-Powered Analytics",
@@ -30,7 +32,7 @@ const Projects = ({ darkMode }) => {
   ];
 
   return (
-    <section id="projects" className="projects">
+    <section id="projects" className={`projects ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="projects-noise" />
       <div className="projects-container">
         <h2 className="projects-title">

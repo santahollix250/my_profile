@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,17 +9,9 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true);
+const AppContent = () => {
+  const { isDarkMode } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -40,22 +33,28 @@ function App() {
   };
 
   return (
-    <div className={`app ${darkMode ? 'dark' : 'light'}`}>
-      <div className={`min-h-screen theme-transition ${darkMode ? 'bg-black' : 'bg-gray-50'}`}>
+    <div className="app">
+      <div className={`min-h-screen theme-transition ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
         <Navbar 
-          darkMode={darkMode} 
-          setDarkMode={setDarkMode}
           activeSection={activeSection}
           scrollToSection={scrollToSection}
         />
-        <Hero scrollToSection={scrollToSection} darkMode={darkMode} />
-        <About darkMode={darkMode} />
-        <Skills darkMode={darkMode} />
-        <Projects darkMode={darkMode} />
-        <Contact darkMode={darkMode} />
-        <Footer darkMode={darkMode} />
+        <Hero scrollToSection={scrollToSection} />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
       </div>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

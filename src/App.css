@@ -12,73 +12,86 @@ html {
   transition: background-color 0.5s ease, color 0.3s ease;
 }
 
-/* Black and Red Theme Variables */
-:root {
-  --primary-red: #ff0000;
-  --dark-red: #cc0000;
-  --light-red: #ff3333;
-  --deep-red: #990000;
-  --blood-red: #8b0000;
-  --crimson: #dc143c;
-  --black: #000000;
-  --dark-gray: #111111;
-  --medium-gray: #1a1a1a;
-  --light-gray: #2a2a2a;
-  --text-light: #ffffff;
-  --text-gray: #888888;
+/* Dark Theme (Black & Red) */
+.dark-theme {
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --accent-primary: #ff0000;
+  --accent-secondary: #cc0000;
+  --accent-light: #ff3333;
+  --border-color: rgba(255, 0, 0, 0.3);
+  --card-bg: rgba(255, 0, 0, 0.02);
+  --glow-color: rgba(255, 0, 0, 0.5);
 }
 
-/* Custom Scrollbar - Red Theme */
+/* Light Theme (White & Red) */
+.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --accent-primary: #ff0000;
+  --accent-secondary: #cc0000;
+  --accent-light: #ff3333;
+  --border-color: rgba(255, 0, 0, 0.2);
+  --card-bg: rgba(255, 0, 0, 0.02);
+  --glow-color: rgba(255, 0, 0, 0.3);
+}
+
+.bg-black {
+  background-color: #000000;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
-::-webkit-scrollbar-track {
+.dark-theme ::-webkit-scrollbar-track {
   background: #000000;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: #000000;
-}
-
-.light ::-webkit-scrollbar-track {
-  background: #f3f4f6;
+.light-theme ::-webkit-scrollbar-track {
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #ff0000, #cc0000, #990000);
   border-radius: 6px;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
   border: 2px solid #000000;
 }
 
-.light ::-webkit-scrollbar-thumb {
-  border: 2px solid #f3f4f6;
+.light-theme ::-webkit-scrollbar-thumb {
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #ff3333, #ff0000, #cc0000);
 }
 
-/* Common Gradient Text - Red Theme */
-.gradient-text {
-  background: linear-gradient(135deg, #ff0000 0%, #ff3333 50%, #cc0000 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Red Glow Effect */
-.red-glow {
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3);
-}
-
 /* Selection Color */
 ::selection {
   background: #ff0000;
-  color: #000000;
+  color: #ffffff;
 }
 
-::-moz-selection {
+.dark-theme ::-moz-selection {
   background: #ff0000;
-  color: #000000;
+  color: #ffffff;
+}
+
+.light-theme ::-moz-selection {
+  background: #ff0000;
+  color: #ffffff;
 }

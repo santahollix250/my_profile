@@ -1,11 +1,13 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
-const Navbar = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
+const Navbar = ({ activeSection, scrollToSection }) => {
+  const { isDarkMode, toggleTheme } = useTheme();
   const sections = ['home', 'about', 'skills', 'projects', 'contact'];
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isDarkMode ? 'navbar-dark' : 'navbar-light'}`}>
       <div className="navbar-scan-line" />
       <div className="navbar-container">
         <div className="navbar-logo">
@@ -32,10 +34,23 @@ const Navbar = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
         </div>
         
         <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="theme-toggle"
+          onClick={toggleTheme}
+          className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
+          aria-label="Toggle theme"
         >
-          <span className="theme-icon">{darkMode ? '🔴' : '⚫'}</span>
+          <span className="theme-icon">
+            {isDarkMode ? (
+              <>
+                <span className="icon-sun">☀️</span>
+                <span className="icon-text">LIGHT</span>
+              </>
+            ) : (
+              <>
+                <span className="icon-moon">🌙</span>
+                <span className="icon-text">DARK</span>
+              </>
+            )}
+          </span>
           <span className="theme-pulse" />
         </button>
       </div>

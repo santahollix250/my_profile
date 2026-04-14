@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Contact.css';
 
-const Contact = ({ darkMode }) => {
+const Contact = () => {
+  const { isDarkMode } = useTheme();
   const socialLinks = [
     { icon: '🔗', label: 'Website' },
     { icon: '💼', label: 'LinkedIn' },
@@ -11,7 +13,7 @@ const Contact = ({ darkMode }) => {
   ];
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className={`contact ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="contact-grid-overlay" />
       <div className="contact-container">
         <h2 className="contact-title">

@@ -2,7 +2,15 @@
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.skills.dark {
   background: #000000;
+}
+
+.skills.light {
+  background: #ffffff;
 }
 
 .skills-grid-bg {
@@ -83,6 +91,11 @@
   opacity: 0;
 }
 
+.skills.light .skill-card {
+  background: rgba(255, 0, 0, 0.02);
+  border-color: rgba(255, 0, 0, 0.2);
+}
+
 .skill-card:hover {
   transform: translateY(-10px);
   border-color: #ff0000;
@@ -148,7 +161,14 @@
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
   transition: all 0.3s ease;
+}
+
+.skills.dark .skill-name {
   color: #ffffff;
+}
+
+.skills.light .skill-name {
+  color: #000000;
 }
 
 .skill-card:hover .skill-name {

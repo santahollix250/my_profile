@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Hero.css';
-import profileImg from '../assets/profile.jpg'; // Import your image
+import profileImg from '../assets/profile.png';
 
-const Hero = ({ scrollToSection, darkMode }) => {
+const Hero = ({ scrollToSection }) => {
+  const { isDarkMode } = useTheme();
   const canvasRef = useRef(null);
 
-  // Matrix-like red rain effect
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -24,7 +25,7 @@ const Hero = ({ scrollToSection, darkMode }) => {
     }
     
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = isDarkMode ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       ctx.font = fontSize + 'px monospace';
@@ -34,7 +35,6 @@ const Hero = ({ scrollToSection, darkMode }) => {
         const x = i * fontSize;
         const y = drops[i] * fontSize;
         
-        // Red gradient effect
         const gradient = ctx.createLinearGradient(x, y - fontSize, x, y);
         gradient.addColorStop(0, '#ff0000');
         gradient.addColorStop(0.5, '#ff3333');
@@ -43,7 +43,6 @@ const Hero = ({ scrollToSection, darkMode }) => {
         ctx.fillStyle = gradient;
         ctx.fillText(text, x, y);
         
-        // Glow effect
         ctx.shadowColor = '#ff0000';
         ctx.shadowBlur = 15;
         ctx.fillText(text, x, y);
@@ -71,14 +70,12 @@ const Hero = ({ scrollToSection, darkMode }) => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDarkMode]);
 
   return (
-    <section id="home" className="hero">
-      {/* Matrix Rain Canvas */}
+    <section id="home" className={`hero ${isDarkMode ? 'dark' : 'light'}`}>
       <canvas ref={canvasRef} className="hero-canvas" />
       
-      {/* Animated Background Elements */}
       <div className="hero-background">
         <div className="hero-grid" />
         <div className="hero-blood-cells">
@@ -98,37 +95,27 @@ const Hero = ({ scrollToSection, darkMode }) => {
           ))}
         </div>
         
-        {/* Pulsing Red Orbs */}
         <div className="hero-orbs">
           <div className="orb orb-1" />
           <div className="orb orb-2" />
           <div className="orb orb-3" />
         </div>
         
-        {/* Scanning Line */}
         <div className="scan-line" />
-        
-        {/* Noise Overlay */}
         <div className="noise-overlay" />
       </div>
 
-      {/* Main Content */}
       <div className="hero-content">
-        {/* Profile Image with Red Ring */}
         <div className="hero-avatar-wrapper">
           <div className="avatar-ring-red" />
           <div className="avatar-ring-pulse" />
           <div className="avatar-ring-rotate" />
           <div className="hero-avatar">
-            <img
-              src={profileImg}
-              alt="Profile"
-            />
+            <img src={profileImg} alt="Profile" />
             <div className="avatar-glitch-overlay" />
           </div>
         </div>
         
-        {/* Glitch Text Effect */}
         <div className="hero-text-wrapper">
           <div className="hero-subtitle-greeting">
             <span className="bracket">[</span>
@@ -160,12 +147,8 @@ const Hero = ({ scrollToSection, darkMode }) => {
           </p>
         </div>
         
-        {/* Animated Buttons */}
         <div className="hero-buttons">
-          <button
-            onClick={() => scrollToSection('projects')}
-            className="hero-btn-primary"
-          >
+          <button onClick={() => scrollToSection('projects')} className="hero-btn-primary">
             <span className="btn-text">VIEW PROJECTS</span>
             <span className="btn-blood-ripple" />
             <span className="btn-corner-top-left" />
@@ -174,17 +157,13 @@ const Hero = ({ scrollToSection, darkMode }) => {
             <span className="btn-corner-bottom-right" />
           </button>
           
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="hero-btn-secondary"
-          >
+          <button onClick={() => scrollToSection('contact')} className="hero-btn-secondary">
             <span className="btn-text">CONTACT ME</span>
             <span className="btn-blood-fill" />
           </button>
         </div>
       </div>
       
-      {/* Scroll Indicator */}
       <div className="hero-scroll-indicator">
         <div className="scroll-line" />
         <div className="scroll-mouse">
@@ -200,7 +179,6 @@ const Hero = ({ scrollToSection, darkMode }) => {
         </span>
       </div>
       
-      {/* Corner Decorations */}
       <div className="corner-decoration corner-tl" />
       <div className="corner-decoration corner-tr" />
       <div className="corner-decoration corner-bl" />

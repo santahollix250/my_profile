@@ -1,9 +1,12 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Footer.css';
 
-const Footer = ({ darkMode }) => {
+const Footer = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <footer className="footer">
+    <footer className={`footer ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="footer-blood-line" />
       <div className="footer-container">
         <div className="footer-content">

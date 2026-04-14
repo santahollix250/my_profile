@@ -2,8 +2,16 @@
   padding: 2rem 0;
   position: relative;
   overflow: hidden;
-  background: #000000;
   border-top: 1px solid #ff0000;
+  transition: background-color 0.3s ease;
+}
+
+.footer.dark {
+  background: #000000;
+}
+
+.footer.light {
+  background: #ffffff;
 }
 
 .footer-blood-line {
@@ -47,9 +55,16 @@
 }
 
 .footer-text {
-  color: #888888;
   font-size: 0.9rem;
   letter-spacing: 1px;
+}
+
+.footer.dark .footer-text {
+  color: #888888;
+}
+
+.footer.light .footer-text {
+  color: #666666;
 }
 
 .footer-name {
@@ -99,10 +114,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #888888;
   font-size: 0.8rem;
   letter-spacing: 2px;
   font-family: monospace;
+}
+
+.footer.dark .footer-status {
+  color: #888888;
+}
+
+.footer.light .footer-status {
+  color: #666666;
 }
 
 .status-dot {

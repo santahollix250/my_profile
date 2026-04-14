@@ -2,7 +2,15 @@
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.contact.dark {
   background: #000000;
+}
+
+.contact.light {
+  background: #ffffff;
 }
 
 .contact-grid-overlay {
@@ -99,11 +107,21 @@
   padding: 1rem 1.25rem 1rem 2.5rem;
   background: rgba(255, 0, 0, 0.02);
   border: 1px solid rgba(255, 0, 0, 0.3);
-  color: #ffffff;
   font-size: 1rem;
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+}
+
+.contact.dark .contact-input,
+.contact.dark .contact-textarea {
+  color: #ffffff;
+}
+
+.contact.light .contact-input,
+.contact.light .contact-textarea {
+  color: #000000;
+  background: rgba(255, 0, 0, 0.02);
 }
 
 .contact-textarea {
@@ -144,6 +162,11 @@
 .contact-textarea::placeholder {
   color: #666666;
   font-weight: 300;
+}
+
+.contact.light .contact-input::placeholder,
+.contact.light .contact-textarea::placeholder {
+  color: #999999;
 }
 
 .contact-submit-btn {

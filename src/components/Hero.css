@@ -5,10 +5,17 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.hero.dark {
   background: #000000;
 }
 
-/* Matrix Canvas */
+.hero.light {
+  background: #ffffff;
+}
+
 .hero-canvas {
   position: absolute;
   top: 0;
@@ -19,7 +26,10 @@
   opacity: 0.15;
 }
 
-/* Background Elements */
+.hero.light .hero-canvas {
+  opacity: 0.08;
+}
+
 .hero-background {
   position: absolute;
   inset: 0;
@@ -37,7 +47,12 @@
   animation: gridPulse 4s ease-in-out infinite;
 }
 
-/* Blood Cells Animation */
+.hero.light .hero-grid {
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+}
+
 .hero-blood-cells {
   position: absolute;
   inset: 0;
@@ -53,7 +68,10 @@
   mix-blend-mode: screen;
 }
 
-/* Red Orbs */
+.hero.light .blood-cell {
+  opacity: 0.08;
+}
+
 .hero-orbs {
   position: absolute;
   inset: 0;
@@ -94,7 +112,6 @@
   animation: orbSpin 15s linear infinite, orbPulse 6s ease-in-out infinite;
 }
 
-/* Scanning Line */
 .scan-line {
   position: absolute;
   top: 0;
@@ -107,7 +124,6 @@
   z-index: 3;
 }
 
-/* Noise Overlay */
 .noise-overlay {
   position: absolute;
   inset: 0;
@@ -122,7 +138,6 @@
   animation: noise 0.5s steps(10) infinite;
 }
 
-/* Main Content */
 .hero-content {
   max-width: 1280px;
   margin: 0 auto;
@@ -132,7 +147,6 @@
   z-index: 10;
 }
 
-/* Avatar Styles */
 .hero-avatar-wrapper {
   margin-bottom: 2rem;
   display: inline-block;
@@ -176,6 +190,10 @@
   box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
 }
 
+.hero.light .hero-avatar {
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+}
+
 .hero-avatar img {
   width: 100%;
   height: 100%;
@@ -200,7 +218,6 @@
   animation: glitchOverlay 3s infinite;
 }
 
-/* Text Styles */
 .hero-text-wrapper {
   margin-bottom: 2rem;
 }
@@ -226,6 +243,10 @@
   text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
+.hero.light .greeting-text {
+  color: #cc0000;
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 900;
@@ -235,10 +256,17 @@
 .title-line {
   display: block;
   font-size: 1.5rem;
-  color: #888888;
   margin-bottom: 0.5rem;
   font-weight: 300;
   letter-spacing: 2px;
+}
+
+.hero.dark .title-line {
+  color: #888888;
+}
+
+.hero.light .title-line {
+  color: #666666;
 }
 
 .glitch-wrapper {
@@ -304,8 +332,15 @@
 .hero-subtitle {
   font-size: clamp(1rem, 4vw, 1.5rem);
   font-family: 'Courier New', monospace;
-  color: #cccccc;
   letter-spacing: 1px;
+}
+
+.hero.dark .hero-subtitle {
+  color: #cccccc;
+}
+
+.hero.light .hero-subtitle {
+  color: #333333;
 }
 
 .cursor {
@@ -323,9 +358,16 @@
 
 .hero-description {
   font-size: 1.1rem;
-  color: #888888;
   font-family: monospace;
   margin-top: 1rem;
+}
+
+.hero.dark .hero-description {
+  color: #888888;
+}
+
+.hero.light .hero-description {
+  color: #555555;
 }
 
 .comment {
@@ -334,12 +376,19 @@
   opacity: 0.7;
 }
 
+.hero.light .comment {
+  color: #cc0000;
+}
+
 .highlight {
   color: #ff3333;
   font-weight: 600;
 }
 
-/* Buttons */
+.hero.light .highlight {
+  color: #ff0000;
+}
+
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -396,7 +445,6 @@
   height: 300px;
 }
 
-/* Button Corners */
 .btn-corner-top-left,
 .btn-corner-top-right,
 .btn-corner-bottom-left,
@@ -486,7 +534,6 @@
   color: #ffffff;
 }
 
-/* Scroll Indicator */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
@@ -539,6 +586,10 @@
   animation: letterPulse 2s ease-in-out infinite;
 }
 
+.hero.light .scroll-letter {
+  color: #cc0000;
+}
+
 .scroll-letter:nth-child(1) { animation-delay: 0s; }
 .scroll-letter:nth-child(2) { animation-delay: 0.1s; }
 .scroll-letter:nth-child(3) { animation-delay: 0.2s; }
@@ -546,7 +597,6 @@
 .scroll-letter:nth-child(5) { animation-delay: 0.4s; }
 .scroll-letter:nth-child(6) { animation-delay: 0.5s; }
 
-/* Corner Decorations */
 .corner-decoration {
   position: absolute;
   width: 100px;
@@ -585,6 +635,10 @@
   border-bottom: 2px solid #ff0000;
   border-right: 2px solid #ff0000;
   animation: cornerGlow 3s ease-in-out infinite 1.5s;
+}
+
+.hero.light .corner-decoration {
+  border-color: #cc0000;
 }
 
 /* Animations */
@@ -656,6 +710,15 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes glitchIn {
+  0% { opacity: 0; transform: skewX(-10deg) translateX(-50px); }
+  20% { opacity: 0.3; transform: skewX(5deg) translateX(20px); }
+  40% { opacity: 0.5; transform: skewX(-3deg) translateX(-10px); }
+  60% { opacity: 0.7; transform: skewX(2deg) translateX(5px); }
+  80% { opacity: 0.9; transform: skewX(-1deg) translateX(-2px); }
+  100% { opacity: 1; transform: skewX(0) translateX(0); }
+}
+
 @keyframes glitchOverlay {
   0%, 100% { transform: translate(0, 0); }
   20% { transform: translate(-5%, 2%); }
@@ -664,13 +727,14 @@
   80% { transform: translate(3%, -1%); }
 }
 
-@keyframes glitchIn {
-  0% { opacity: 0; transform: skewX(-10deg) translateX(-50px); }
-  20% { opacity: 0.3; transform: skewX(5deg) translateX(20px); }
-  40% { opacity: 0.5; transform: skewX(-3deg) translateX(-10px); }
-  60% { opacity: 0.7; transform: skewX(2deg) translateX(5px); }
-  80% { opacity: 0.9; transform: skewX(-1deg) translateX(-2px); }
-  100% { opacity: 1; transform: skewX(0) translateX(0); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bracketGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 @keyframes gradientFlow {
@@ -700,11 +764,6 @@
   60% { transform: translate(-3px, -2px); }
   80% { transform: translate(-3px, 2px); }
   100% { transform: translate(0); }
-}
-
-@keyframes bracketGlow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
 }
 
 @keyframes cursorPulse {
@@ -743,12 +802,6 @@
   50% { opacity: 1; border-color: #ff3333; box-shadow: 0 0 20px #ff0000; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .hero-buttons {
     gap: 1rem;

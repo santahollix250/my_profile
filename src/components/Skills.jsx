@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './Skills.css';
 
-const Skills = ({ darkMode }) => {
+const Skills = () => {
+  const { isDarkMode } = useTheme();
   const skills = [
     { name: "React", level: 95, icon: "⚛️" },
     { name: "Node.js", level: 90, icon: "🟢" },
@@ -12,7 +14,7 @@ const Skills = ({ darkMode }) => {
   ];
 
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className={`skills ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="skills-grid-bg" />
       <div className="skills-container">
         <h2 className="skills-title">

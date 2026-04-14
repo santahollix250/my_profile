@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 import './About.css';
 
-const About = ({ darkMode }) => {
+const About = () => {
+  const { isDarkMode } = useTheme();
   const stats = [
     { value: '50+', label: 'Projects', icon: '💀' },
     { value: '30+', label: 'Clients', icon: '🩸' },
@@ -9,7 +11,7 @@ const About = ({ darkMode }) => {
   ];
 
   return (
-    <section id="about" className="about">
+    <section id="about" className={`about ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="about-scan-line" />
       <div className="about-container">
         <h2 className="about-title">
